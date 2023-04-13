@@ -130,7 +130,7 @@ abstract class BaseView<Controller extends BaseController>
   }
 
   Color pageBackgroundColor() {
-    return AppColors.white.withOpacity(.96);
+    return AppColors.background;
   }
 
   Color statusBarColor() {

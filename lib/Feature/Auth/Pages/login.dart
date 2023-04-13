@@ -1,4 +1,5 @@
 import 'package:fitness/Core/Base/base_view.dart';
+import 'package:fitness/Core/Components/validator.dart';
 import 'package:fitness/Core/Global/Widgets/global_input_box.dart';
 import 'package:fitness/Core/Global/Widgets/global_submit_button.dart';
 import 'package:fitness/Core/Resources/app_spacings.dart';
@@ -26,22 +27,10 @@ class LoginPage extends BaseView<LoginController> {
         width: Get.height,
         child: ListView(
           children: [
-            Image.asset(
-              "assets/images/logo file4-ai.png",
-              width: 200.r,
-              height: 200.r,
-            ),
             GlobalInputBox(
               label: 'Email',
               controller: controller.emailCtrl,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Enter Your Email";
-                }
-                if (!GetUtils.isEmail(value)) {
-                  return 'Invalid email';
-                }
-              },
+              validator: Validators.validateEmail,
             ),
             const SizedBox(
               height: 10,
@@ -54,13 +43,7 @@ class LoginPage extends BaseView<LoginController> {
                 changeObscure: controller.changeObscure,
                 hideContent: controller.passObscure.value,
                 maxLines: 1,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Enter Your Password";
-                  } else if (value.length < 6) {
-                    return "The password must be more than 6 digits";
-                  }
-                },
+                validator: Validators.validatePassword,
               ),
             ),
             const SizedBox(
@@ -72,76 +55,6 @@ class LoginPage extends BaseView<LoginController> {
             ),
             const SizedBox(
               height: 15,
-            ),
-            InkWell(
-              onTap: controller.gotoForgetPassword,
-              child: const Text(
-                "Forgot Password?",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: Get.height * .02,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey.withOpacity(0.5),
-                    thickness: 1.5,
-                  ),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                const Text("or"),
-                const SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey.withOpacity(0.5),
-                    thickness: 1.5,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: Get.height * .02,
-            ),
-            GlobalSubmitButton(
-              func: controller.gotoRegister,
-              title: 'Register',
-              color: Colors.black,
-            ),
-            SizedBox(
-              height: Get.height * .01,
-            ),
-            const Text(
-              "Registration on fitnessverse require \ninvite code from one of your friend",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.0,
-              ),
-            ),
-            SizedBox(
-              height: Get.height * .02,
-            ),
-            TextButton(
-              onPressed: controller.gotoRoles,
-              child: const Text(
-                "Terms and Policy",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
             ),
             SizedBox(height: 25.r),
           ],

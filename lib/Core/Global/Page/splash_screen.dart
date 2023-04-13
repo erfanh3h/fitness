@@ -2,7 +2,6 @@ import 'package:fitness/Core/Base/base_view.dart';
 import 'package:fitness/Core/Global/Controllers/global_controller.dart';
 import 'package:fitness/Core/Global/Widgets/global_loading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends BaseView<GlobalController> {
@@ -15,14 +14,14 @@ class SplashScreen extends BaseView<GlobalController> {
       width: Get.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Image(
-            image: AssetImage(
-              'assets/images/logo file4-ai.png',
-            ),
-          ),
-          SizedBox(height: 15.r),
-          const GlobalLoadingWidget(size: 75),
+        children: const [
+          // const Image(
+          //   image: AssetImage(
+          //     'assets/images/logo file4-ai.png',
+          //   ),
+          // ),
+          // SizedBox(height: 15.r),
+          GlobalLoadingWidget(size: 75),
         ],
       ),
     );
