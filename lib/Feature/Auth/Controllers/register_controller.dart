@@ -29,6 +29,7 @@ class RegisterController extends BaseController {
       // await globalController.saveUserTokens(result.resultData!);
       // await globalController.initData();
       ShowMessageCompanent(message: 'You have registered successfully').show();
+      Get.offAllNamed(AppRoutes.days);
     } else {
       ShowMessageCompanent(message: result.errorData!.result).show();
     }

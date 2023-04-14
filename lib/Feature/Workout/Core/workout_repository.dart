@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitness/Core/Global/Controllers/global_controller.dart';
 import 'package:fitness/Core/Global/Models/api_result.dart';
 import 'package:fitness/Core/Network/network_exceptions.dart';
+import 'package:get/get.dart';
 
-abstract class AuthRepository {
+abstract class WorkoutRepository {
   Future<ApiResult<User>> login({
     required String email,
     required String password,
@@ -16,7 +18,7 @@ abstract class AuthRepository {
   Future<bool> logout();
 }
 
-class AuthRepositoryImp extends AuthRepository {
+class WorkoutRepositoryImp extends WorkoutRepository {
   @override
   Future<ApiResult<User>> login({
     required String email,
@@ -68,11 +70,8 @@ class AuthRepositoryImp extends AuthRepository {
 
   @override
   Future<bool> logout() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    try {
-      auth.signOut();
-      return true;
-    } catch (_) {}
-    return false;
+    final globalController = Get.find<GlobalController>();
+    globalController.removeUserData();
+    return true;
   }
 }

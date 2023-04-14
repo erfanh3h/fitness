@@ -11,19 +11,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class RegisterPage extends BaseView<RegisterController> {
-  const RegisterPage({Key? key}) : super(key: key);
-
-  @override
-  bool resizeToAvoidBottomInset() {
-    return true;
-  }
+class WorkoutDaysPage extends BaseView<RegisterController> {
+  const WorkoutDaysPage({Key? key}) : super(key: key);
 
   @override
   AppBar? appBar(BuildContext context) {
     return const GlobalAppbar(
-      title: 'Create an Account',
-      haveLogoutButton: false,
+      title: 'Days',
+      haveBackButton: false,
     ).build(context);
   }
 

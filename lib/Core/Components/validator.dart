@@ -15,7 +15,7 @@ class Validators {
     if (value.isEmpty) {
       return "Enter Your Password";
     } else if (value.length < 8) {
-      return "The password must be more than 6 digits";
+      return "The password must be more than 8 digits";
     }
     return null;
   }

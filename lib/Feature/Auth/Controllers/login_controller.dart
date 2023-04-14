@@ -29,6 +29,7 @@ class LoginController extends BaseController {
       // await globalController.saveUserTokens(result.resultData!);
       // await globalController.initData();
       ShowMessageCompanent(message: 'You have entered successfully').show();
+      Get.offNamed(AppRoutes.days);
     } else {
       ShowMessageCompanent(message: result.errorData!.result).show();
     }
