@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 //R59acd69
-class LoginController extends BaseController {
+class RegisterController extends BaseController {
   final AuthRepository _repo;
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passwordCtrl = TextEditingController();
@@ -15,12 +15,12 @@ class LoginController extends BaseController {
 
   RxBool isChecked = false.obs;
 
-  LoginController(this._repo);
+  RegisterController(this._repo);
 
-  login() async {
+  register() async {
     if (!formKey.currentState!.validate()) return;
     isPageLoading.value = true;
-    var result = await _repo.login(
+    var result = await _repo.register(
       email: emailCtrl.text,
       password: passwordCtrl.text,
     );
@@ -28,7 +28,7 @@ class LoginController extends BaseController {
       // var globalController = Get.find<GlobalController>();
       // await globalController.saveUserTokens(result.resultData!);
       // await globalController.initData();
-      ShowMessageCompanent(message: 'You have entered successfully').show();
+      ShowMessageCompanent(message: 'You have registered successfully').show();
     } else {
       ShowMessageCompanent(message: result.errorData!.result).show();
     }
@@ -39,7 +39,7 @@ class LoginController extends BaseController {
     passObscure.value = !passObscure.value;
   }
 
-  void goToRegister() {
-    Get.toNamed(AppRoutes.register);
+  void goToLogin() {
+    Get.back();
   }
 }

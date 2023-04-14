@@ -25,7 +25,7 @@ abstract class BaseView<Controller extends BaseController>
 
   // You can Override it
   bool safeArea() {
-    return true;
+    return false;
   }
 
   // You can Override it

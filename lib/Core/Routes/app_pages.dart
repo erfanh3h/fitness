@@ -1,12 +1,21 @@
+import 'package:fitness/Feature/Auth/Pages/login.dart';
+import 'package:fitness/Feature/Auth/Pages/register.dart';
 import 'package:get/get.dart';
+
+import 'app_routes.dart';
 
 abstract class AppPages {
   static final pages = <GetPage>[
-    // GetPage(
-    //   name: AppRoutes.splash,
-    //   page: () => const SplashScreen(),
-    //   transition: Transition.fadeIn,
-    // ),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => const LoginPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const RegisterPage(),
+      transition: Transition.fadeIn,
+    ),
     //   GetPage(
     //     name: AppRoutes.login,
     //     page: () => LoginPage(),

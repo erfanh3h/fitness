@@ -1,3 +1,5 @@
+import 'package:fitness/Core/Resources/app_colors.dart';
+import 'package:fitness/Core/Resources/app_radiuses.dart';
 import 'package:fitness/Core/Resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,7 +90,10 @@ class GlobalInputBoxState extends State<GlobalInputBox> {
   Widget build(BuildContext context) {
     return Container(
       // margin: EdgeInsets.symmetric(vertical: 10),
-      color: Colors.transparent,
+      decoration: BoxDecoration(
+        borderRadius: AppRadiuses.radiusAll14,
+        color: AppColors().grey90,
+      ),
       child: Directionality(
         textDirection: widget.textDirection,
         child: FocusScope(
@@ -113,47 +118,50 @@ class GlobalInputBoxState extends State<GlobalInputBox> {
             inputFormatters: widget.inputFormatters,
 
             decoration: InputDecoration(
-                counterText: widget.maxLength != null ? null : '',
-                counterStyle: const TextStyle(color: Colors.white),
-                isDense: false,
-                // border: InputBorder.none,
-                labelText: widget.label!.toUpperCase(),
-                labelStyle: TextStyle(
-                  fontSize: widget.fontSize * 4 / 5,
-                  color: isTapped ? Colors.black : Colors.black.withOpacity(.5),
-                ),
-                enabledBorder:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-                focusedBorder:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-                errorBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.red,
-                  ),
-                  // borderRadius: BorderRadius.circular(15),
-                ),
-                focusedErrorBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.red,
-                  ),
-                  // borderRadius: BorderRadius.circular(15),
-                ),
-                suffixIcon: widget.isPassword
-                    ? IconButton(
-                        icon: Icon(
-                          widget.hideContent
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                        ),
-                        color: Colors.black,
-                        onPressed: widget.changeObscure,
-                      )
-                    : null,
-                focusColor: Colors.black,
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+              contentPadding: const EdgeInsets.all(12),
+              counterText: widget.maxLength != null ? null : '',
+              counterStyle: const TextStyle(color: Colors.white),
+              isDense: false,
+              border: InputBorder.none,
+              labelText: widget.label!.toUpperCase(),
+              labelStyle: TextStyle(
+                fontSize: widget.fontSize * 4 / 5,
+                color: isTapped ? Colors.black : Colors.black.withOpacity(.5),
+              ),
+              // enabledBorder:
+              //     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+              // focusedBorder:
+              //     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+              // errorBorder: const OutlineInputBorder(
+              //   borderSide: BorderSide(
+              //     color: Colors.red,
+              //   ),
+              //   // borderRadius: BorderRadius.circular(15),
+              // ),
+              // focusedErrorBorder: const OutlineInputBorder(
+              //   borderSide: BorderSide(
+              //     color: Colors.red,
+              //   ),
+              //   // borderRadius: BorderRadius.circular(15),
+              // ),
+              suffixIcon: widget.isPassword
+                  ? IconButton(
+                      icon: Icon(
+                        widget.hideContent
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      color: AppColors.primary,
+                      onPressed: widget.changeObscure,
+                    )
+                  : null,
+              focusColor: AppColors.primary,
+              // border: OutlineInputBorder(
+              //   borderRadius: BorderRadius.circular(5),
+              // ),
+            ),
             // cursorColor: widget.color,
-            style: AppTextStyles.headline2,
+            style: AppTextStyles.headline3,
             textInputAction: widget.textInputAction,
             keyboardType: widget.textType,
             minLines: widget.minLines,
