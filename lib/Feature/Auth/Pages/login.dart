@@ -47,7 +47,7 @@ class LoginPage extends BaseView<LoginController> {
               ),
               SizedBox(height: 40.r),
               GlobalInputBox(
-                label: 'Your Name',
+                label: 'E-mail',
                 controller: controller.emailCtrl,
                 validator: Validators.validateEmail,
               ),

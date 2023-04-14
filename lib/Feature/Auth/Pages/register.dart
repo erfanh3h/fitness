@@ -42,7 +42,7 @@ class RegisterPage extends BaseView<RegisterController> {
           children: [
             SizedBox(height: 56.r),
             GlobalInputBox(
-              label: 'Your Name',
+              label: 'E-mail',
               controller: controller.emailCtrl,
               validator: Validators.validateEmail,
             ),

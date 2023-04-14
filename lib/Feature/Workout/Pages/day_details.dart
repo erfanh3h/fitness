@@ -1,22 +1,34 @@
 import 'package:fitness/Core/Base/base_view.dart';
 import 'package:fitness/Core/Global/Widgets/global_appbar.dart';
+import 'package:fitness/Core/Resources/app_colors.dart';
 import 'package:fitness/Core/Resources/app_consts.dart';
 import 'package:fitness/Core/Resources/app_spacings.dart';
 import 'package:fitness/Core/Resources/app_theme.dart';
-import 'package:fitness/Feature/Workout/Controllers/workout_days_controller.dart';
+import 'package:fitness/Feature/Workout/Controllers/day_details_controller.dart';
 import 'package:fitness/Feature/Workout/Widgets/select_day.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class WorkoutDaysPage extends BaseView<WorkoutDaysController> {
-  const WorkoutDaysPage({Key? key}) : super(key: key);
+class DayDetailsPage extends BaseView<DayDetailsController> {
+  const DayDetailsPage({Key? key}) : super(key: key);
 
   @override
   AppBar? appBar(BuildContext context) {
     return const GlobalAppbar(
-      title: 'Days',
-      haveBackButton: false,
+      title: 'Workouts',
     ).build(context);
+  }
+
+  @override
+  Widget? floatingActionButton() {
+    return FloatingActionButton(
+      onPressed: controller.goToAddWorkout,
+      backgroundColor: AppColors.primary,
+      child: const Icon(
+        Icons.add,
+        color: AppColors.white,
+      ),
+    );
   }
 
   @override

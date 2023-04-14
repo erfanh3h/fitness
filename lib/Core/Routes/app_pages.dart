@@ -1,6 +1,8 @@
 import 'package:fitness/Core/Global/Page/splash.dart';
 import 'package:fitness/Feature/Auth/Pages/login.dart';
 import 'package:fitness/Feature/Auth/Pages/register.dart';
+import 'package:fitness/Feature/Workout/Pages/add_workout.dart';
+import 'package:fitness/Feature/Workout/Pages/day_details.dart';
 import 'package:fitness/Feature/Workout/Pages/workout_days.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +30,16 @@ abstract class AppPages {
       page: () => const WorkoutDaysPage(),
       transition: Transition.fadeIn,
     ),
-
+    GetPage(
+      name: AppRoutes.dayDetails,
+      page: () => const DayDetailsPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: AppRoutes.addWorkout,
+      page: () => const AddWorkoutPage(),
+      transition: Transition.fadeIn,
+    ),
     //   GetPage(
     //     name: AppRoutes.login,
     //     page: () => LoginPage(),

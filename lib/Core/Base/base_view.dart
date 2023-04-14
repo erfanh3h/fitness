@@ -160,6 +160,6 @@ abstract class BaseView<Controller extends BaseController>
   }
 
   FloatingActionButtonLocation? floatingActionButtonLocation() {
-    return FloatingActionButtonLocation.startFloat;
+    return FloatingActionButtonLocation.endFloat;
   }
 }

@@ -5,7 +5,6 @@ import 'package:fitness/Feature/Auth/Core/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-//R59acd69
 class RegisterController extends BaseController {
   final AuthRepository _repo;
   final TextEditingController emailCtrl = TextEditingController();
