@@ -6,9 +6,6 @@ import 'package:fitness/Core/Routes/app_routes.dart';
 import 'package:get/get.dart';
 
 import '../../../Feature/Auth/Core/auth_repository.dart';
-import '../Models/user_data_model.dart';
-import '../Models/user_tokens_model.dart';
-
 class GlobalController extends BaseController {
   final GlobalRepository globalRepo;
   final AuthRepository authRepository;
@@ -20,17 +17,17 @@ class GlobalController extends BaseController {
     // _userTokens.value = await storageController.getUserTokens();
   }
 
-  Future<void> saveUserData(final UserDataModel userData) async {
+  // Future<void> saveUserData(final UserDataModel userData) async {
     // final storageController = Get.find<UserStoreController>();
     // await storageController.saveUserData(userData);
     // _user.value = userData;
-  }
+  // }
 
-  Future<void> saveUserTokens(final UserTokensModel userTokens) async {
+  // Future<void> saveUserTokens(final UserTokensModel userTokens) async {
     // final storageController = Get.find<UserStoreController>();
     // await storageController.saveUserTokens(userTokens);
     // _userTokens.value = userTokens;
-  }
+  // }
 
   Future<void> removeUserData() async {
     // final storageController = Get.find<UserStoreController>();
