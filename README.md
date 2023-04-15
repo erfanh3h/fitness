@@ -1,6 +1,7 @@
 # fitness
 
-This is a test application for save user workouts in firestore.
+* This is a test application for save user workouts in firestore.
+* In this app user can login via firebase and save his/her workouts in firestore,edit them or delete them from firestore.
 
 ## Structure
 
@@ -14,3 +15,7 @@ In this test getx used for state manager and mvvm-tdd used for architecture.
 * firebase_auth :  for authentication to firebase.
 * firebase_core :  for connect app to firebase.
 * cloud_firestore :  for sync workouts to server.
+
+## Chalanges
+
+* Only chalange for me was firestore and how to handle sync data and crud with it.I do it by searching and some previous experinces.
