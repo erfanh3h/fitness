@@ -33,7 +33,11 @@ class DayDetailsController extends BaseController {
   }
 
   void goToAddWorkout() {
-    Get.toNamed(AppRoutes.addWorkout);
+    Get.toNamed(AppRoutes.addWorkout, arguments: day)!.then((result) {
+      if (result != null) {
+        data.add(result);
+      }
+    });
   }
 
   @override

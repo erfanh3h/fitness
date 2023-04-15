@@ -1,6 +1,13 @@
 import 'package:get/get.dart';
 
 class Validators {
+  static String? validateName(String value) {
+    if (value.isEmpty) {
+      return "This Field Required!";
+    }
+    return null;
+  }
+
   static String? validateEmail(String value) {
     if (value.isEmpty) {
       return "Enter Your Email";

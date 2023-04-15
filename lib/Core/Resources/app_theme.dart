@@ -32,4 +32,10 @@ class AppTextStyles {
     fontSize: 16.sp,
     color: AppColors.white,
   );
+
+  static final header2 = TextStyle(
+    fontSize: 19.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.primary,
+  );
 }

@@ -28,7 +28,7 @@ class WorkoutDaysPage extends BaseView<WorkoutDaysController> {
           SizedBox(height: 20.r),
           Text(
             'Hello,irem',
-            style: AppTextStyles.headline1.copyWith(fontSize: 19.r),
+            style: AppTextStyles.header2,
           ),
           const SizedBox(height: 10),
           Text(
