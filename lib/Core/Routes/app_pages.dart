@@ -1,4 +1,4 @@
-import 'package:fitness/Core/Global/Page/splash.dart';
+import 'package:fitness/Core/Global/Page/splash_page.dart';
 import 'package:fitness/Feature/Auth/Pages/login.dart';
 import 'package:fitness/Feature/Auth/Pages/register.dart';
 import 'package:fitness/Feature/Workout/Pages/add_workout.dart';

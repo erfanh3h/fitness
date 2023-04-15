@@ -40,12 +40,12 @@ class DayDetailsPage extends BaseView<DayDetailsController> {
           children: [
             SizedBox(height: 20.r),
             Text(
-              'Hello,irem',
+              'Hello,${controller.userEmail}',
               style: AppTextStyles.header2,
             ),
             const SizedBox(height: 10),
             Text(
-              'Choose the day you want to make reservations',
+              'Select the workout you want to change',
               style: AppTextStyles.headline2.copyWith(fontSize: 12.r),
             ),
             SizedBox(height: 30.r),

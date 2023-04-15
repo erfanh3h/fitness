@@ -27,7 +27,7 @@ class WorkoutDaysPage extends BaseView<WorkoutDaysController> {
         children: [
           SizedBox(height: 20.r),
           Text(
-            'Hello,irem',
+            'Hello,${controller.userEmail}',
             style: AppTextStyles.header2,
           ),
           const SizedBox(height: 10),

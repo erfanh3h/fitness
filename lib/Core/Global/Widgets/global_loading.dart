@@ -1,3 +1,4 @@
+import 'package:fitness/Core/Resources/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class GlobalLoadingWidget extends StatelessWidget {
@@ -12,7 +13,8 @@ class GlobalLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: CircularProgressIndicator(
-        color: color,
+        color: color ?? AppColors.primary,
+        strokeWidth: size ?? 4.0,
       ),
     );
   }

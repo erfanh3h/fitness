@@ -1,5 +1,4 @@
 import 'package:fitness/Core/Global/Controllers/global_controller.dart';
-import 'package:fitness/Core/Global/Controllers/main_controller.dart';
 import 'package:fitness/Feature/Auth/Core/auth_binding.dart';
 import 'package:fitness/Feature/Workout/Core/workout_binding.dart';
 import 'package:get/get.dart';
@@ -12,7 +11,6 @@ class GlobalBinding implements Bindings {
   void dependencies() {
     AuthBinding().dependencies();
     WorkoutBinding().dependencies();
-    Get.put(MainController());
     Get.lazyPut<GlobalRepository>(
       () => GlobalRepositoryImp(),
       fenix: true,

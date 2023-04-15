@@ -1,5 +1,6 @@
 import 'package:fitness/Core/Base/base_controller.dart';
 import 'package:fitness/Core/Components/show_message.dart';
+import 'package:fitness/Core/Global/Controllers/global_controller.dart';
 import 'package:fitness/Core/Routes/app_routes.dart';
 import 'package:fitness/Feature/Workout/Core/workout_repository.dart';
 import 'package:fitness/Feature/Workout/Models/workout_details.dart';
@@ -11,6 +12,8 @@ class DayDetailsController extends BaseController {
 
   late String day;
   RxList<WorkoutDetailsModel> data = RxList([]);
+
+  final String userEmail = Get.find<GlobalController>().userEmail ?? '';
 
   getData({bool isRefresh = false}) async {
     if (isRefresh) {
