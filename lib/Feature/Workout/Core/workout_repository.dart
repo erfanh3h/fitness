@@ -1,36 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/Core/Global/Models/api_result.dart';
 import 'package:fitness/Core/Network/network_exceptions.dart';
+import 'package:fitness/Feature/Workout/Models/workout_details.dart';
 
 abstract class WorkoutRepository {
-  Future<ApiResult<User>> login({
-    required String email,
-    required String password,
-  });
+  Future<ApiResult<List<WorkoutDetailsModel>>> readWorkouts(
+      {required String day});
 }
 
 class WorkoutRepositoryImp extends WorkoutRepository {
   @override
-  Future<ApiResult<User>> login({
-    required String email,
-    required String password,
-  }) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
+  Future<ApiResult<List<WorkoutDetailsModel>>> readWorkouts(
+      {required String day}) async {
     try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return ApiResult(resultData: userCredential.user);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        return ApiResult(
-            errorData: NetworkExceptions(result: 'User not found!'));
-      } else if (e.code == 'wrong-password') {
-        return ApiResult(
-            errorData: NetworkExceptions(result: 'Password is incorrect'));
+      String userId = FirebaseAuth.instance.currentUser!.uid;
+      final CollectionReference collection =
+          FirebaseFirestore.instance.collection('workouts');
+      final data = await collection
+          .where("userid", isEqualTo: userId)
+          .where("day", isEqualTo: day)
+          .get();
+      final List<WorkoutDetailsModel> result = [];
+      for (var element in data.docs) {
+        result.add(
+            WorkoutDetailsModel.fromJson(element.data() as Map, element.id));
       }
+      return ApiResult(resultData: result);
+    } catch (_) {
+      return ApiResult(
+        errorData: NetworkExceptions(result: 'Error to read data from server'),
+      );
     }
-    return ApiResult();
   }
 }

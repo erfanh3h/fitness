@@ -6,6 +6,7 @@ import 'package:fitness/Core/Routes/app_routes.dart';
 import 'package:get/get.dart';
 
 import '../../../Feature/Auth/Core/auth_repository.dart';
+
 class GlobalController extends BaseController {
   final GlobalRepository globalRepo;
   final AuthRepository authRepository;
@@ -18,15 +19,15 @@ class GlobalController extends BaseController {
   }
 
   // Future<void> saveUserData(final UserDataModel userData) async {
-    // final storageController = Get.find<UserStoreController>();
-    // await storageController.saveUserData(userData);
-    // _user.value = userData;
+  // final storageController = Get.find<UserStoreController>();
+  // await storageController.saveUserData(userData);
+  // _user.value = userData;
   // }
 
   // Future<void> saveUserTokens(final UserTokensModel userTokens) async {
-    // final storageController = Get.find<UserStoreController>();
-    // await storageController.saveUserTokens(userTokens);
-    // _userTokens.value = userTokens;
+  // final storageController = Get.find<UserStoreController>();
+  // await storageController.saveUserTokens(userTokens);
+  // _userTokens.value = userTokens;
   // }
 
   Future<void> removeUserData() async {
@@ -61,12 +62,10 @@ class GlobalController extends BaseController {
     // }
   }
   loginToPrevius() {
-    try {
-      FirebaseAuth auth = FirebaseAuth.instance;
-      print(auth.currentUser!.email);
+    FirebaseAuth auth = FirebaseAuth.instance;
+    if (auth.currentUser != null) {
       Get.offNamed(AppRoutes.days);
-    } catch (_) {
-      print('no user');
+    } else {
       Get.offNamed(AppRoutes.login);
     }
   }

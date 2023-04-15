@@ -1,11 +1,10 @@
 import 'package:fitness/Core/Base/base_view.dart';
 import 'package:fitness/Core/Global/Widgets/global_appbar.dart';
 import 'package:fitness/Core/Resources/app_colors.dart';
-import 'package:fitness/Core/Resources/app_consts.dart';
 import 'package:fitness/Core/Resources/app_spacings.dart';
 import 'package:fitness/Core/Resources/app_theme.dart';
 import 'package:fitness/Feature/Workout/Controllers/day_details_controller.dart';
-import 'package:fitness/Feature/Workout/Widgets/select_day.dart';
+import 'package:fitness/Feature/Workout/Widgets/workout_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,9 +51,10 @@ class DayDetailsPage extends BaseView<DayDetailsController> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (ctx, index) {
-              return SelectDayWidget(
-                name: AppConsts.days[index],
-                onTap: controller.goToDetails,
+              return WorkoutRowWidget(
+                data: controller.data[index],
+                onTap: controller.goToUpdate,
+                onDelete: controller.deleteWorkout,
               );
             },
             separatorBuilder: (ctx, index) {
@@ -62,7 +62,7 @@ class DayDetailsPage extends BaseView<DayDetailsController> {
                 height: 15.r,
               );
             },
-            itemCount: AppConsts.days.length,
+            itemCount: controller.data.length,
           ),
           SizedBox(height: 25.r),
         ],

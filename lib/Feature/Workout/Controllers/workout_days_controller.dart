@@ -6,7 +6,6 @@ class WorkoutDaysController extends BaseController {
   WorkoutDaysController();
 
   void goToDetails(String day) {
-    print('object');
     Get.toNamed(AppRoutes.dayDetails, arguments: day);
   }
 }
