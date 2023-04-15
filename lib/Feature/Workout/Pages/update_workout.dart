@@ -5,13 +5,14 @@ import 'package:fitness/Core/Global/Widgets/global_input_box.dart';
 import 'package:fitness/Core/Global/Widgets/global_submit_button.dart';
 import 'package:fitness/Core/Resources/app_spacings.dart';
 import 'package:fitness/Core/Resources/app_theme.dart';
-import 'package:fitness/Feature/Workout/Controllers/add_workout_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class AddWorkoutPage extends BaseView<AddWorkoutController> {
-  const AddWorkoutPage({Key? key}) : super(key: key);
+import '../Controllers/update_workout_controller.dart';
+
+class UpdateWorkoutPage extends BaseView<UpdateWorkoutController> {
+  const UpdateWorkoutPage({Key? key}) : super(key: key);
 
   @override
   AppBar? appBar(BuildContext context) {
@@ -33,7 +34,7 @@ class AddWorkoutPage extends BaseView<AddWorkoutController> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Add the workout of your choice.",
+                  "After changing the program, don't forget to update it.",
                   style: AppTextStyles.header2,
                 ),
               ),
@@ -56,8 +57,8 @@ class AddWorkoutPage extends BaseView<AddWorkoutController> {
                 child: SizedBox(
                   width: Get.size.width / 2,
                   child: GlobalSubmitButton(
-                    func: controller.create,
-                    title: 'Add',
+                    func: controller.updateWorkout,
+                    title: 'Update',
                   ),
                 ),
               ),

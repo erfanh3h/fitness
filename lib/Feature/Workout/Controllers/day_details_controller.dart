@@ -12,7 +12,10 @@ class DayDetailsController extends BaseController {
   late String day;
   RxList<WorkoutDetailsModel> data = RxList([]);
 
-  getData() async {
+  getData({bool isRefresh = false}) async {
+    if (isRefresh) {
+      data.clear();
+    }
     isPageLoading.value = true;
     var result = await _repo.readWorkouts(day: day);
     if (result.resultData != null) {
@@ -25,11 +28,20 @@ class DayDetailsController extends BaseController {
   }
 
   void goToUpdate(WorkoutDetailsModel workout) {
-    Get.toNamed(AppRoutes.updateWorkout, arguments: workout);
+    Get.toNamed(AppRoutes.updateWorkout, arguments: workout)!.then((result) {
+      if (result != null) {
+        final index = data.indexWhere((element) => element.id == workout.id);
+        data.removeAt(index);
+        data.insert(index, result);
+      }
+    });
   }
 
-  void deleteWorkout(String id) {
-    print(id);
+  void deleteWorkout(String id) async {
+    data.removeWhere((element) => element.id == id);
+    var result = await _repo.deleteWorkout(id: id);
+    if (result.resultData != null) {
+    } else {}
   }
 
   void goToAddWorkout() {

@@ -13,14 +13,14 @@ abstract class WorkoutRepository {
     required String time,
     required String day,
   });
-  // Future<ApiResult<bool>> updateWorkout({
-  //   required String id,
-  //   required String day,
-  //   required String name,
-  // });
-  // Future<ApiResult<bool>> deleteWorkout({
-  //   required String id,
-  // });
+  Future<ApiResult<bool>> updateWorkout({
+    required String id,
+    String? name,
+    String? time,
+  });
+  Future<ApiResult<bool>> deleteWorkout({
+    required String id,
+  });
 }
 
 class WorkoutRepositoryImp extends WorkoutRepository {
@@ -74,6 +74,46 @@ class WorkoutRepositoryImp extends WorkoutRepository {
     } catch (_) {
       return ApiResult(
         errorData: NetworkExceptions(result: 'Error to read data from server'),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<bool>> updateWorkout({
+    required String id,
+    String? name,
+    String? time,
+  }) async {
+    try {
+      Map<String, dynamic> changes = {};
+      if (time != null) {
+        changes['time'] = time;
+      }
+      if (name != null) {
+        changes['name'] = name;
+      }
+      final CollectionReference collection =
+          FirebaseFirestore.instance.collection('workouts');
+
+      await collection.doc(id).update(changes);
+      return ApiResult(resultData: true);
+    } catch (_) {
+      return ApiResult(
+        errorData: NetworkExceptions(result: 'Error to read data from server'),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<bool>> deleteWorkout({required String id}) async {
+    try {
+      final CollectionReference collection =
+          FirebaseFirestore.instance.collection('workouts');
+      await collection.doc(id).delete();
+      return ApiResult(resultData: true);
+    } catch (_) {
+      return ApiResult(
+        errorData: NetworkExceptions(result: 'Error to delete data'),
       );
     }
   }
