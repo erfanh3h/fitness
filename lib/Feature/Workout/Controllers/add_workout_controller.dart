@@ -14,6 +14,7 @@ class AddWorkoutController extends BaseController {
 
   var formKey = GlobalKey<FormState>();
 
+  // create new workout function
   create() async {
     if (!formKey.currentState!.validate()) return;
     isPageLoading.value = true;

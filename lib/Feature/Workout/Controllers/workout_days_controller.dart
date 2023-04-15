@@ -8,6 +8,7 @@ class WorkoutDaysController extends BaseController {
 
   final String userEmail = Get.find<GlobalController>().userEmail ?? '';
 
+  //go to day workouts list
   void goToDetails(String day) {
     Get.toNamed(AppRoutes.dayDetails, arguments: day);
   }

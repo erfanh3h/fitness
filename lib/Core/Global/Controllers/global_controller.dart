@@ -15,8 +15,9 @@ class GlobalController extends BaseController {
 
   String? userEmail;
 
+  //check login session exists
   loginToPrevious() async {
-    await Future.delayed(const Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 1));
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null) {
       userEmail = auth.currentUser!.email!;

@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class GlobalInputBox extends StatefulWidget {
-  // final Color? color;
-  // final IconData? icon;
   final String? label;
   final Function? function;
   final Function? onTapFunction;
@@ -32,8 +30,6 @@ class GlobalInputBox extends StatefulWidget {
 
   const GlobalInputBox({
     Key? key,
-    // required this.color,
-    // required this.icon,
     required this.label,
     required this.controller,
     this.function,
@@ -89,7 +85,6 @@ class GlobalInputBoxState extends State<GlobalInputBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         borderRadius: AppRadiuses.radiusAll14,
         color: AppColors().grey90,
@@ -128,22 +123,6 @@ class GlobalInputBoxState extends State<GlobalInputBox> {
                 fontSize: widget.fontSize * 4 / 5,
                 color: isTapped ? Colors.black : Colors.black.withOpacity(.5),
               ),
-              // enabledBorder:
-              //     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-              // focusedBorder:
-              //     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-              // errorBorder: const OutlineInputBorder(
-              //   borderSide: BorderSide(
-              //     color: Colors.red,
-              //   ),
-              //   // borderRadius: BorderRadius.circular(15),
-              // ),
-              // focusedErrorBorder: const OutlineInputBorder(
-              //   borderSide: BorderSide(
-              //     color: Colors.red,
-              //   ),
-              //   // borderRadius: BorderRadius.circular(15),
-              // ),
               suffixIcon: widget.isPassword
                   ? IconButton(
                       icon: Icon(
@@ -156,11 +135,7 @@ class GlobalInputBoxState extends State<GlobalInputBox> {
                     )
                   : null,
               focusColor: AppColors.primary,
-              // border: OutlineInputBorder(
-              //   borderRadius: BorderRadius.circular(5),
-              // ),
             ),
-            // cursorColor: widget.color,
             style: AppTextStyles.headline3,
             textInputAction: widget.textInputAction,
             keyboardType: widget.textType,

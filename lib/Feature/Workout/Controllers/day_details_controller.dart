@@ -15,6 +15,7 @@ class DayDetailsController extends BaseController {
 
   final String userEmail = Get.find<GlobalController>().userEmail ?? '';
 
+  // get workouts from server function
   getData({bool isRefresh = false}) async {
     if (isRefresh) {
       data.clear();
@@ -30,6 +31,7 @@ class DayDetailsController extends BaseController {
     }
   }
 
+  // goto uptade page
   void goToUpdate(WorkoutDetailsModel workout) {
     Get.toNamed(AppRoutes.updateWorkout, arguments: workout)!.then((result) {
       if (result != null) {
@@ -40,6 +42,7 @@ class DayDetailsController extends BaseController {
     });
   }
 
+  //delete workout function
   void deleteWorkout(String id) async {
     data.removeWhere((element) => element.id == id);
     var result = await _repo.deleteWorkout(id: id);
@@ -47,6 +50,7 @@ class DayDetailsController extends BaseController {
     } else {}
   }
 
+  //go to add new workout page
   void goToAddWorkout() {
     Get.toNamed(AppRoutes.addWorkout, arguments: day)!.then((result) {
       if (result != null) {

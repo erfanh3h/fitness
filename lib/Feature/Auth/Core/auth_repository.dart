@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness/Core/Global/Models/api_result.dart';
+import 'package:fitness/Core/Network/api_result.dart';
 import 'package:fitness/Core/Network/network_exceptions.dart';
 
 abstract class AuthRepository {

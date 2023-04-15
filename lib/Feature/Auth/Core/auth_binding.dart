@@ -6,7 +6,6 @@ import 'package:fitness/Feature/Auth/Core/auth_repository.dart';
 class AuthBinding implements Bindings {
   @override
   void dependencies() {
-    // Get.put(MusicDetailsController());
     Get.lazyPut<AuthRepository>(
       () => AuthRepositoryImp(),
       fenix: true,

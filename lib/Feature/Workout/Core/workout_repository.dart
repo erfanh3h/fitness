@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness/Core/Global/Models/api_result.dart';
+import 'package:fitness/Core/Network/api_result.dart';
 import 'package:fitness/Core/Network/network_exceptions.dart';
+import 'package:fitness/Core/Routes/server_routes.dart';
 import 'package:fitness/Feature/Workout/Models/workout_details.dart';
 
 abstract class WorkoutRepository {
@@ -30,7 +31,8 @@ class WorkoutRepositoryImp extends WorkoutRepository {
     try {
       String userId = FirebaseAuth.instance.currentUser!.uid;
       final CollectionReference collection =
-          FirebaseFirestore.instance.collection('workouts');
+          FirebaseFirestore.instance.collection(ServerRoutes.category);
+      //get query of user workouts in certain day
       final data = await collection
           .where("userid", isEqualTo: userId)
           .where("day", isEqualTo: day)
@@ -67,6 +69,7 @@ class WorkoutRepositoryImp extends WorkoutRepository {
       );
       final CollectionReference collection =
           FirebaseFirestore.instance.collection('workouts');
+      //add new workout
       var result = await collection.add(workout.toJson());
       final resultData = WorkoutDetailsModel.fromJson(
           (await result.get()).data() as Map, result.id);
@@ -94,7 +97,7 @@ class WorkoutRepositoryImp extends WorkoutRepository {
       }
       final CollectionReference collection =
           FirebaseFirestore.instance.collection('workouts');
-
+      //update workout
       await collection.doc(id).update(changes);
       return ApiResult(resultData: true);
     } catch (_) {
@@ -109,6 +112,7 @@ class WorkoutRepositoryImp extends WorkoutRepository {
     try {
       final CollectionReference collection =
           FirebaseFirestore.instance.collection('workouts');
+      //delete given workout
       await collection.doc(id).delete();
       return ApiResult(resultData: true);
     } catch (_) {

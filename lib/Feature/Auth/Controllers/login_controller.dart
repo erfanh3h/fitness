@@ -16,6 +16,7 @@ class LoginController extends BaseController {
 
   LoginController(this._repo);
 
+  //login to account function
   login() async {
     if (!formKey.currentState!.validate()) return;
     isPageLoading.value = true;
@@ -24,9 +25,6 @@ class LoginController extends BaseController {
       password: passwordCtrl.text,
     );
     if (result.resultData != null) {
-      // var globalController = Get.find<GlobalController>();
-      // await globalController.saveUserTokens(result.resultData!);
-      // await globalController.initData();
       ShowMessageCompanent(message: 'You have entered successfully').show();
       Get.offNamed(AppRoutes.days);
     } else {

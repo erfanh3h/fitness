@@ -30,7 +30,6 @@ class RegisterPage extends BaseView<RegisterController> {
   @override
   Widget body(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      // statusBarBrightness: Brightness.dark,
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
     ));

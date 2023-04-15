@@ -15,6 +15,7 @@ class UpdateWorkoutController extends BaseController {
 
   var formKey = GlobalKey<FormState>();
 
+  //update workout function
   updateWorkout() async {
     if (!formKey.currentState!.validate()) return;
     isPageLoading.value = true;

@@ -16,6 +16,7 @@ class RegisterController extends BaseController {
 
   RegisterController(this._repo);
 
+  // register to account function
   register() async {
     if (!formKey.currentState!.validate()) return;
     isPageLoading.value = true;
@@ -24,9 +25,6 @@ class RegisterController extends BaseController {
       password: passwordCtrl.text,
     );
     if (result.resultData != null) {
-      // var globalController = Get.find<GlobalController>();
-      // await globalController.saveUserTokens(result.resultData!);
-      // await globalController.initData();
       ShowMessageCompanent(message: 'You have registered successfully').show();
       Get.offAllNamed(AppRoutes.days);
     } else {

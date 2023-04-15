@@ -64,22 +64,9 @@ abstract class BaseView<Controller extends BaseController>
     return pageContent(context);
   }
 
-  // Widget annotatedRegion(final BuildContext context) {
-  //   return AnnotatedRegion(
-  //     value: SystemUiOverlayStyle(
-  //         //Status bar color for android
-  //         statusBarColor: statusBarColor(),
-  //         statusBarIconBrightness: Brightness.light,
-  //         systemNavigationBarColor: statusBarColor(),
-  //         statusBarBrightness: Brightness.light),
-  //     child: pageContent(context),
-  //   );
-  // }
-
   Widget pageScaffold(final BuildContext context) {
     return Obx(
       () => Scaffold(
-        //sets ios status bar color
         backgroundColor: pageBackgroundColor(),
         key: setScaffoldKey(),
         appBar: appBar(context),
@@ -90,17 +77,6 @@ abstract class BaseView<Controller extends BaseController>
         body: controller.isPageLoading.value ? _showLoading() : body(context),
         drawer: drawer(),
         endDrawer: endDrawer(),
-
-        // this couse keyboard close problem
-        // body: LayoutBuilder(builder: (context, cons) {
-        //   if (cons.maxWidth < 600) {
-        //     return body(context);
-        //   } else if (cons.maxWidth < 1200) {
-        //     return tabletBody(context);
-        //   } else {
-        //     return webBody(context);
-        //   }
-        // }),
         bottomNavigationBar: bottomNavigationBar(),
         resizeToAvoidBottomInset: resizeToAvoidBottomInset(),
       ),
