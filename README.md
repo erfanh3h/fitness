@@ -6,7 +6,7 @@
 
 ## Structure
 
-In this test getx used for state manager and mvvm-tdd used for architecture.
+* In this app getx used for state manager and mvvm-tdd used for architecture.
 
 ## Used Packages
 
