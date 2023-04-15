@@ -2,6 +2,7 @@
 
 * This is a test application for save user workouts in firestore.
 * In this app user can login via firebase and save his/her workouts in firestore,edit them or delete them from firestore.
+* Application release attached to repository.
 
 ## Structure
 
